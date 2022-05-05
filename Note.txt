@@ -1,0 +1,34 @@
+1) open emulator.
+cd AudioApp: npx react-native run-android
+
+De chuyen cac man hinh, cai dat:  npm install @react-navigation/native
+Thiet lap su phu thuoc: npm install react-native-screens react-native-safe-area-context
+Install Bottom Tabs Navigator: npm install @react-navigation/bottom-tabs
+Tai icon: 
+install: npm install react-native-vector-icons
+link thu vien: npx react-native link
+Ở navigation/AppNavigation: import Icon from 'react-native-vector-icons/FontAwesome5';
+
+----
+cai hien thi thanh truot theo nhac: npm install @react-native-community/slider --save
+---
+cai dat : npm install react-native-track-player@next
+--sua loi Android:
+sua loi k mo duoc cua track-player: vao android/build.gradle: them doan code
+jcenter(){
+            content{
+                includeGroup("com.google.android.exoplayer")
+            }
+        }
+//mave{}
+-----
+First, you need to register a playback service right after registering the main component of your app (typically in your index.js file at the root of your project):
+
+// AppRegistry.registerComponent(...);
+TrackPlayer.registerPlaybackService(() => require('./service'));
+
+// service.js
+module.exports = async function() {
+    // This service needs to be registered for the module to work
+    // but it will be used later in the "Receiving Events" section
+}
